@@ -1,12 +1,12 @@
-﻿# AppAuthentication Cli Tool
+﻿# AppAuthentication DotNetCore Cli Tool
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://raw.githubusercontent.com/kdcllc/Bet.AspNetCore/master/LICENSE)
-[![Build status](https://ci.appveyor.com/api/projects/status/fo9rakj7s7uhs3ij?svg=true)](https://ci.appveyor.com/project/kdcllc/bet-aspnetcore)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://raw.githubusercontent.com/kdcllc/AppAuthentication/master/LICENSE)
+[![Build status](https://ci.appveyor.com/api/projects/status/1on0k26sok307feq?svg=true)](https://ci.appveyor.com/project/kdcllc/appauthentication)
 [![NuGet](https://img.shields.io/nuget/v/appauthentication.svg)](https://www.nuget.org/packages?q=appauthentication )
 ![Nuget](https://img.shields.io/nuget/dt/appauthentication )
-[![feedz.io](https://img.shields.io/badge/endpoint.svg?url=https://f.feedz.io/kdcllc/bet-aspnetcore/shield/AppAuthentication/latest)](https://f.feedz.io/kdcllc/bet-aspnetcore/packages/AppAuthentication/latest/download)
+[![feedz.io](https://img.shields.io/badge/endpoint.svg?url=https://f.feedz.io/kdcllc/kdcllc/shield/AppAuthentication/latest)](https://f.feedz.io/kdcllc/kdcllc/packages/AppAuthentication/latest/download)
 
-*Note: Pre-release packages are distributed via [feedz.io](https://f.feedz.io/kdcllc/bet-aspnetcore/nuget/index.json).*
+*Note: Pre-release packages are distributed via [feedz.io](https://f.feedz.io/kdcllc/kdcllc/nuget/index.json).*
 
 This dotnet cli tool provides ability to accesses Azure Key Vault/ Azure Blob Storage in Docker Container when this container is ran on the local machine.
 In addition if needed this cli tool can be enabled to retrieve tokens for local machine development.
@@ -18,8 +18,7 @@ The tool was tested on:
 
 - On Linux with Azure Cli only. Install Azure Cli `curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash`
 
-
-![appauthentication debug in docker](../../img/appauthentication-docker-debug.gif)
+![appauthentication debug in docker](./img/appauthentication-docker-debug.gif)
 
 ## Install
 
