@@ -6,8 +6,14 @@
 
         // MSI related constants
         public static readonly string MsiAppServiceEndpointEnv = "MSI_ENDPOINT";
-
         public static readonly string MsiAppServiceSecretEnv = "MSI_SECRET";
+
+        /// <summary>
+        /// https://github.com/Azure/azure-sdk-for-net/blob/b1169c66c74d6b89f24d4c1110b49247ec7dc155/sdk/mgmtcommon/AppAuthentication/Azure.Services.AppAuthentication/TokenProviders/MsiAccessTokenProvider.cs#L128
+        /// </summary>
+        public static readonly string MsiAppServiceEndpointEnv2 = "IDENTITY_ENDPOINT";
+
+        public static readonly string MsiAppServiceSecretEnv2 = "IDENTITY_HEADER";
 
         public static readonly string MsiContainerUrl = "host.docker.internal";
 

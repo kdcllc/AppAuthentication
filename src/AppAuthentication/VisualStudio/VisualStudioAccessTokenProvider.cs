@@ -1,40 +1,42 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+using AppAuthentication.Helpers;
+using AppAuthentication.Models;
+using Microsoft.Azure.Services.AppAuthentication;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 
-using AppAuthentication.Helpers;
-using AppAuthentication.Models;
-
-using Microsoft.Azure.Services.AppAuthentication;
-
 namespace AppAuthentication.VisualStudio
 {
     internal class VisualStudioAccessTokenProvider : NonInteractiveAzureServiceTokenProviderBase, IAccessTokenProvider
     {
+        internal const string TokenProviderFileNotFound = "Visual Studio token provider file not found at";
+
         private const string ResourceArgumentName = "--resource";
         private const string TenantArgumentName = "--tenant";
-
         private const string LocalAppDataPathEnv = "LOCALAPPDATA"; // %USERPROFILE%\AppData\Local
         private const string NoAppDataEnvironmentVariableError = "Environment variable LOCALAPPDATA not set.";
         private const string TokenProviderFilePath = ".IdentityService\\AzureServiceAuth\\tokenprovider.json";
-        private const string TokenProviderFileNotFound = "Visual Studio Token provider file not found at";
 
         // Represents the token provider file, which has information about executable to call to get token.
         private VisualStudioTokenProviderFile _visualStudioTokenProviderFile;
+        private readonly ILogger<VisualStudioAccessTokenProvider> _logger;
 
         // Allows for unit testing, by mocking IProcessManager
         private readonly IProcessManager _processManager;
 
-        internal VisualStudioAccessTokenProvider(
+        public VisualStudioAccessTokenProvider(
             IProcessManager processManager,
-            VisualStudioTokenProviderFile visualStudioTokenProviderFile = null)
+            VisualStudioTokenProviderFile visualStudioTokenProviderFile,
+            ILogger<VisualStudioAccessTokenProvider> logger)
         {
             _visualStudioTokenProviderFile = visualStudioTokenProviderFile;
+            _logger = logger;
             _processManager = processManager;
             PrincipalUsed = new Principal { Type = "User" };
         }
@@ -46,7 +48,7 @@ namespace AppAuthentication.VisualStudio
                 // Validate resource, since it gets sent as a command line argument to Visual Studio token provider.
                 ValidationHelper.ValidateResource(resource);
 
-                _visualStudioTokenProviderFile = _visualStudioTokenProviderFile ?? GetTokenProviderFile();
+                _visualStudioTokenProviderFile = _visualStudioTokenProviderFile?.TokenProviders == null ? GetTokenProviderFile() : _visualStudioTokenProviderFile;
 
                 // Get process start infos based on Visual Studio token providers
                 var processStartInfos = GetProcessStartInfos(_visualStudioTokenProviderFile, resource, UriHelper.GetTenantByAuthority(authority));
@@ -80,7 +82,7 @@ namespace AppAuthentication.VisualStudio
 
                         var authResult = Models.AppAuthenticationResult.Create(tokenResponse, TokenResponse.DateFormat.DateTimeString);
 
-                        var authenticationToken = new AuthenticationToken
+                        return new AuthenticationToken
                         {
                             AccessToken = authResult.AccessToken,
                             TokenType = authResult.TokenType,
@@ -90,13 +92,12 @@ namespace AppAuthentication.VisualStudio
                             ExtExpiresIn = accessToken.ExpiryTime.ToString(),
                             RefreshToken = tokenResponse.AccessToken,
                         };
-
-                        return authenticationToken;
                     }
                     catch (Exception exp)
                     {
                         // If token cannot be acquired using a token provider, try the next one
                         exceptionDictionary[Path.GetFileName(startInfo.FileName)] = exp.Message;
+                        _logger.LogError(exp, "Token vailed");
                     }
                 }
 
@@ -157,7 +158,7 @@ namespace AppAuthentication.VisualStudio
         {
             var processStartInfos = new List<ProcessStartInfo>();
 
-            foreach (var tokenProvider in visualStudioTokenProviderFile.TokenProviders)
+            foreach (var tokenProvider in visualStudioTokenProviderFile?.TokenProviders)
             {
                 // If file does not exist, the version of Visual Studio that set the token provider may be uninstalled.
                 if (File.Exists(tokenProvider.Path))

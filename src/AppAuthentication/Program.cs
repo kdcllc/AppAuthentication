@@ -1,13 +1,10 @@
-﻿using System;
-using System.Diagnostics;
+﻿using McMaster.Extensions.CommandLineUtils;
+
+using System;
 using System.Drawing;
 using System.Reflection;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-
-using McMaster.Extensions.CommandLineUtils;
-
 using Console = Colorful.Console;
 
 namespace AppAuthentication
@@ -24,17 +21,15 @@ namespace AppAuthentication
     {
         private static async Task<int> Main(string[] args)
         {
-            using (var mutex = new Mutex(true, Constants.CLIToolName, out var canCreateNew))
+            using var mutex = new Mutex(true, Constants.CLIToolName, out var canCreateNew);
+            if (canCreateNew)
             {
-                if (canCreateNew)
-                {
-                    return await CommandLineApplication.ExecuteAsync<Program>(args);
-                }
-                else
-                {
-                    Console.WriteLine($"Only one instance of the {Constants.CLIToolName} tool can be run at the same time.", Color.Red);
-                    return -1;
-                }
+                return await CommandLineApplication.ExecuteAsync<Program>(args);
+            }
+            else
+            {
+                Console.WriteLine($"Only one instance of the {Constants.CLIToolName} tool can be run at the same time.", Color.Red);
+                return -1;
             }
         }
 
@@ -49,6 +44,7 @@ namespace AppAuthentication
             console.WriteLine(ConsoleColor.Red, "You must specify at a subcommand.");
 
             console.WriteLine();
+
             app.ShowHelp();
 
             return Task.FromResult(1);

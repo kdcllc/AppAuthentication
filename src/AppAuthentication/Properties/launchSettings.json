@@ -2,7 +2,7 @@
   "profiles": {
     "AppAuthentication": {
       "commandName": "Project",
-      "commandLineArgs": "run --verbose:debug"
+      "commandLineArgs": "run --verbose:debug -l"
     },
     "Docker": {
       "commandName": "Docker"

@@ -7,7 +7,7 @@ pull_requests:
 image: Visual Studio 2019
 ## temporary until 3.1.301 sdk is installed
 install:
-  - ps: $urlCurrent = "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/3.1.301/dotnet-sdk-3.1.301-win-x64.zip"
+  - ps: $urlCurrent = "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/6.0.400/dotnet-sdk-6.0.400-win-x64.zip"
   - ps: $env:DOTNET_INSTALL_DIR = "$pwd\.dotnetsdk"
   - ps: mkdir $env:DOTNET_INSTALL_DIR -Force | Out-Null
   - ps: $tempFileCurrent = [System.IO.Path]::GetTempFileName()
@@ -32,6 +32,6 @@ deploy:
 - provider: NuGet
   artifact: /NuGet/
   api_key:
-    secure: jrexooMHJwdbj5MGacSL9fCj3g2haDXMarPEkiLpdIZmasb/zeMYb0NVofvi5HvJ
+    secure: kgfx3UjQf8mUXlve528oftCtzSfX1DW13tmOrV7Ozh1IhWvwvih9W4BwisOYZZ+C
   on:
     branch: master

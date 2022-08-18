@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace AppAuthentication
 {
@@ -18,8 +18,10 @@ namespace AppAuthentication
             _options = options;
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
-            if (!string.IsNullOrEmpty(Environment.GetEnvironmentVariable(Constants.MsiAppServiceEndpointEnv, EnvironmentVariableTarget.User)) &&
-                !string.IsNullOrEmpty(Environment.GetEnvironmentVariable(Constants.MsiAppServiceSecretEnv, EnvironmentVariableTarget.User)))
+            if (!string.IsNullOrEmpty(Environment.GetEnvironmentVariable(Constants.MsiAppServiceEndpointEnv, EnvironmentVariableTarget.User))
+                && !string.IsNullOrEmpty(Environment.GetEnvironmentVariable(Constants.MsiAppServiceSecretEnv, EnvironmentVariableTarget.User))
+                && !string.IsNullOrEmpty(Environment.GetEnvironmentVariable(Constants.MsiAppServiceEndpointEnv2, EnvironmentVariableTarget.User))
+                && !string.IsNullOrEmpty(Environment.GetEnvironmentVariable(Constants.MsiAppServiceSecretEnv2, EnvironmentVariableTarget.User)))
             {
                 _logger.LogTrace("{serviceName} resetting User Environment variables.", nameof(EnvironmentHostedService));
                 ResetVariables();
@@ -50,9 +52,18 @@ namespace AppAuthentication
                 _options.SecretId,
                 EnvironmentVariableTarget.User);
 
-            _logger.LogTrace(
-                "{serviceName} ended setting up User Environment variables {url}-{secret}",
-                nameof(EnvironmentHostedService),
+            Environment.SetEnvironmentVariable(
+                Constants.MsiAppServiceEndpointEnv2,
+                envMsiUrl,
+                EnvironmentVariableTarget.User);
+
+            Environment.SetEnvironmentVariable(
+                Constants.MsiAppServiceSecretEnv2,
+                _options.SecretId,
+                EnvironmentVariableTarget.User);
+
+            _logger.LogInformation(
+                "The following User Environment variables were set MSI_ENDPOINT:{endPoint} | MSI_SECRET: {secret}",
                 envMsiUrl,
                 _options.SecretId);
 
@@ -72,6 +83,10 @@ namespace AppAuthentication
         {
             Environment.SetEnvironmentVariable(Constants.MsiAppServiceEndpointEnv, null, EnvironmentVariableTarget.User);
             Environment.SetEnvironmentVariable(Constants.MsiAppServiceSecretEnv, null, EnvironmentVariableTarget.User);
+
+            Environment.SetEnvironmentVariable(Constants.MsiAppServiceEndpointEnv2, null, EnvironmentVariableTarget.User);
+            Environment.SetEnvironmentVariable(Constants.MsiAppServiceSecretEnv2, null, EnvironmentVariableTarget.User);
+
             Environment.SetEnvironmentVariable(Constants.AzureAuthConnectionStringEnv, null, EnvironmentVariableTarget.User);
         }
     }
