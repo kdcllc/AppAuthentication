@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30225.117
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppAuthentication", "src\AppAuthentication.csproj", "{32D9834C-B3E5-4107-9935-9AB62E549DD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppAuthentication", "src\AppAuthentication\AppAuthentication.csproj", "{32D9834C-B3E5-4107-9935-9AB62E549DD7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{151DFE65-BEF1-4C07-99B7-C3C86F4C8A8E}"
 	ProjectSection(SolutionItems) = preProject
@@ -14,8 +14,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		clean.sh = clean.sh
 		Directory.Build.props = Directory.Build.props
 		Directory.Build.targets = Directory.Build.targets
+		docker-compose.yaml = docker-compose.yaml
 		LICENSE = LICENSE
 		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E96F924A-5780-483B-BCE5-A1C301E340A7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkerSample", "src\WorkerSample\WorkerSample.csproj", "{9CDDFB98-0F6C-4B1F-90EA-10AC0B471594}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{B177F6B4-A0BC-4E05-BA51-F33021875F14}"
+	ProjectSection(SolutionItems) = preProject
+		build\dependencies.props = build\dependencies.props
+		build\settings.props = build\settings.props
+		build\sources.props = build\sources.props
 	EndProjectSection
 EndProject
 Global
@@ -28,9 +40,17 @@ Global
 		{32D9834C-B3E5-4107-9935-9AB62E549DD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32D9834C-B3E5-4107-9935-9AB62E549DD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32D9834C-B3E5-4107-9935-9AB62E549DD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CDDFB98-0F6C-4B1F-90EA-10AC0B471594}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CDDFB98-0F6C-4B1F-90EA-10AC0B471594}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CDDFB98-0F6C-4B1F-90EA-10AC0B471594}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CDDFB98-0F6C-4B1F-90EA-10AC0B471594}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{32D9834C-B3E5-4107-9935-9AB62E549DD7} = {E96F924A-5780-483B-BCE5-A1C301E340A7}
+		{9CDDFB98-0F6C-4B1F-90EA-10AC0B471594} = {E96F924A-5780-483B-BCE5-A1C301E340A7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AC3EC492-59C9-4EE2-97E5-1BF36F6C7DF9}

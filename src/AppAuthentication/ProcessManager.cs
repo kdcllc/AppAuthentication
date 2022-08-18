@@ -1,10 +1,9 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Diagnostics;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
-using Microsoft.Extensions.Logging;
 
 namespace AppAuthentication
 {
@@ -20,7 +19,7 @@ namespace AppAuthentication
         }
 
         // Timeout used such that if process does not respond in this time, it is killed.
-        private readonly TimeSpan _timeOutDuration = TimeSpan.FromSeconds(20);
+        private readonly TimeSpan _timeOutDuration = TimeSpan.FromSeconds(60);
 
         // Error when process took too long.
         private const string TimeOutError = "Process took too long to return the token.";

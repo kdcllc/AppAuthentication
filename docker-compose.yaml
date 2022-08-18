@@ -1,0 +1,16 @@
+version: '3.4'
+
+# docker-compose -f "docker-compose.yaml" up -d --build
+# docker-compose -f "docker-compose.yaml" up -d --no-recreate
+services:
+  bet.web:
+    image: app:WorkerSample
+    build:
+      context: .
+      dockerfile: src/WorkerSample/Dockerfile
+    environment:
+      - DOTNETCORE_ENVIRONMENT=Development
+      - MSI_ENDPOINT=${MSI_ENDPOINT}
+      - MSI_SECRET=${MSI_SECRET}
+      - IDENTITY_ENDPOINT=${IDENTITY_ENDPOINT}
+      - IDENTITY_HEADER=${IDENTITY_HEADER}

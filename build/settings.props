@@ -1,10 +1,10 @@
 <Project>
 
   <PropertyGroup Label="Basic Settings">
-    <VersionPrefix>4.0.0-preview1</VersionPrefix>
+    <VersionPrefix>5.0.0-preview1</VersionPrefix>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>preview</LangVersion>
     <Nullable>disable</Nullable>
     <NoWarn>$(NoWarn);CS1591;NU1605;</NoWarn>
   </PropertyGroup>
@@ -17,13 +17,11 @@
   </PropertyGroup>
 
   <PropertyGroup Label="Nuget Package Settings">
-    <Description>Collection of AspNetCore extensions and reusable functionality.</Description>
+    <Description>DoNetCore CLI tool for allowing local Docker Containers access to Azure Resources.</Description>
     <PackageProjectUrl>https://github.com/kdcllc/AppAuthentication</PackageProjectUrl>
     <RepositoryUrl>https://github.com/kdcllc/AppAuthentication.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicense>https://github.com/kdcllc/AppAuthentication/master/LICENSE</PackageLicense>
-
-    <!-- https://docs.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu5048 -->
     <PackageIcon>icon.png</PackageIcon>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>

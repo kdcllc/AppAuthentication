@@ -53,5 +53,10 @@ namespace AppAuthentication
         /// The default MSI_ENPOINT environment variable supports Docker only callbacks.
         /// </summary>
         public bool IsLocal { get; set; }
+
+        /// <summary>
+        /// File content root.
+        /// </summary>
+        public string ContentRoot { get; set; }
     }
 }
