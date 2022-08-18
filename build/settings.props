@@ -22,8 +22,6 @@
     <RepositoryUrl>https://github.com/kdcllc/AppAuthentication.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicense>https://github.com/kdcllc/AppAuthentication/master/LICENSE</PackageLicense>
-
-    <!-- https://docs.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu5048 -->
     <PackageIcon>icon.png</PackageIcon>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>

@@ -19,6 +19,14 @@ Once the tool is run, User specific Environments are set for the following varia
 
 These values allow for simulation of Azure App Service MSI Managed Identity calls.
 
+## Hire me
+
+Please send [email](mailto:kingdavidconsulting@gmail.com) if you consider to **hire me**.
+
+[![buymeacoffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/vyve0og)
+
+## Give a Star! :star:
+
 It supports the following authentication libraries:
 
 1. [`Microsoft.Azure.Services.AppAuthentication`](https://docs.microsoft.com/en-us/dotnet/api/overview/azure/service-to-service-authentication)
@@ -41,16 +49,17 @@ The tool was tested on:
 ## Usage local Docker with Azure CLI
 
 1. In the terminal login to the Azure subscription:
-    ```bash
-        az login
-        az account list
-        az account set –subscription “YourSubscriptionName”
-    ```
+
+   ```bash
+       az login
+       az account list
+       az account set –subscription “YourSubscriptionName”
+   ```
 
 2. Next before starting any terminals or Development IDE please run this tool in command prompt
-    ```bash
-    appauthentication run
-    ```
+   ```bash
+   appauthentication run
+   ```
 3. Verify that User Environment Variables are created `Get-ChildItem Env:` :
 
 ```bash
@@ -89,28 +98,16 @@ Please see sample project [`WorkerSample`](./src/WorkerSample)
 
 ## `appauthentication` Tools possible switches
 
-* --authority:https://login.microsoftonline.com/{tenantId} or -a:https://login.microsoftonline.com/{tenantId}
-* --verbose:debug
-* --token-provider:AzureCli (default) or -t:AzureCli
-* --token-provider:VisualStudio or -t:VisualStudio
-* --environment:Production or -e:Development (used with Azure Vault values to be loaded into tooling)
-* --resource:{scope} or -r:{scope}
-* --port:1010 or -p:2323 (default: 5050)
-* --config:file or -c:appsettings.config
-* --fix or -f
-* --local or -l (default Docker) - local overrides Visual Studio.NET token profiles with this tooling
-
-
-
-https://docs.microsoft.com/en-us/dotnet/azure/sdk/authentication
-
-https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-how-to-find-tenant
-
-http://localhost:5050/oauth2/token?api-version=2017-09-01&resource=https%3A%2F%2Fvault.azure.com
-
-http://localhost:5050/oauth2/token?api-version=2017-09-01&resource=https%3A%2F%2Fbetstorage.azure.com
-
-- Start au
+- --authority:https://login.microsoftonline.com/{tenantId} or -a:https://login.microsoftonline.com/{tenantId}
+- --verbose:debug
+- --token-provider:AzureCli (default) or -t:AzureCli
+- --token-provider:VisualStudio or -t:VisualStudio
+- --environment:Production or -e:Development (used with Azure Vault values to be loaded into tooling)
+- --resource:{scope} or -r:{scope}
+- --port:1010 or -p:2323 (default: 5050)
+- --config:file or -c:appsettings.config
+- --fix or -f
+- --local or -l (default Docker) - local overrides Visual Studio.NET token profiles with this tooling
 
 ## Testing `appauthentication` from cli command
 
@@ -123,4 +120,4 @@ http://localhost:5050/oauth2/token?api-version=2017-09-01&resource=https%3A%2F%2
 - To learn how to use this tool in real life example refer to [K8.DotNetCore.Workshop](https://github.com/kdcllc/K8.DotNetCore.Workshop)
 
 - [How to authenticate .NET apps to Azure services using the .NET Azure SDK](https://docs.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line)
-- 
+- [How to find your Azure Active Directory tenant ID](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-how-to-find-tenant)

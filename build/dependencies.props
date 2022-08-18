@@ -1,20 +1,15 @@
 <Project>
 
-  <!-- Reference for the msbuild tags: https://docs.microsoft.com/en-us/dotnet/core/tools/csproj -->
-  <PropertyGroup>
-    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
-  </PropertyGroup>
-
   <ItemGroup Label="SourceLink">
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup Label="Analyzers">
-    <PackageReference Include="Bet.CodeAnalyzers" Version="1.0.10" PrivateAssets="All" />
+    <PackageReference Include="Bet.CodeAnalyzers" Version="1.0.12" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="../img/icon.png" Pack="true" Visible="false" PackagePath="" />
+    <None Include="../../img/icon.png" Pack="true" Visible="false" PackagePath="" />
   </ItemGroup>
 
 </Project>
