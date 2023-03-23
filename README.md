@@ -57,9 +57,11 @@ The tool was tested on:
    ```
 
 2. Next before starting any terminals or Development IDE please run this tool in command prompt
-   ```bash
-   appauthentication run
-   ```
+
+  ```bash
+      appauthentication run
+  ```
+
 3. Verify that User Environment Variables are created `Get-ChildItem Env:` :
 
 ```bash
@@ -115,6 +117,22 @@ Please see sample project [`WorkerSample`](./src/WorkerSample)
     dotnet run -- run --verbose:debug --local
 ```
 
+## Running on Linux
+
+Since linux doesn't support idea of `User` environment variables, the values must be supplied manually in the process before running other commands:
+
+```bash
+    export MSI_ENDPOINT='http://localhost:5050/oauth2/token' \
+    export MSI_SECRET='199aef00-4bd2-441f-9139-9574d001fc89'     \
+    export IDENTITY_ENDPOINT='http://localhost:5050/oauth2/token' \
+    export IDENTITY_HEADER='199aef00-4bd2-441f-9139-9574d001fc89'    
+```
+
+In addition, setting network parameter worked when testing with docker on linux `https://docs.docker.com/network/network-tutorial-host/#procedure`.
+
+```bash
+    docker run --rm -it -e IDENTITY_ENDPOINT='http://localhost:5050/oauth2/token' -e IDENTITY_HEADER='35e4ce9a-8447-45bb-bdd0-7b91e24cb624' --network host mcr.microsoft.com/dotnet/sdk:7.0
+```
 ## Reference
 
 - To learn how to use this tool in real life example refer to [K8.DotNetCore.Workshop](https://github.com/kdcllc/K8.DotNetCore.Workshop)
