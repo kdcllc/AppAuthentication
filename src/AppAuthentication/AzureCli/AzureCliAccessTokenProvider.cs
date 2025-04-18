@@ -70,7 +70,7 @@ namespace AppAuthentication.AzureCli
                     PrincipalUsed.TenantId = token.TenantId;
                 }
 
-                var authResult = Models.AppAuthenticationResult.Create(tokenResponse, TokenResponse.DateFormat.DateTimeString);
+                var authResult = Models.AppAuthenticationResult.Create(tokenResponse, TokenResponse.DateFormat.Unix);
 
                 var authenticationToken = new AuthenticationToken
                 {
