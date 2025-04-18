@@ -1,4 +1,6 @@
-﻿using AppAuthentication.AzureCli;
+﻿using System;
+using System.IO;
+using AppAuthentication.AzureCli;
 using AppAuthentication.VisualStudio;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -7,8 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using System;
-using System.IO;
 
 namespace AppAuthentication
 {

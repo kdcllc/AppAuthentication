@@ -1,10 +1,10 @@
-﻿using AppAuthentication.Helpers;
+﻿using System;
+using System.Drawing;
+using System.Threading.Tasks;
+using AppAuthentication.Helpers;
 using McMaster.Extensions.CommandLineUtils;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Drawing;
-using System.Threading.Tasks;
 using Console = Colorful.Console;
 
 namespace AppAuthentication

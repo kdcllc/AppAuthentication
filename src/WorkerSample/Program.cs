@@ -1,7 +1,7 @@
+using System.Reflection;
 using Serilog;
 using Serilog.Events;
 using Serilog.Sinks.AzureAnalytics;
-using System.Reflection;
 
 // Start our smart AppHost
 AppHost.Start(args, Assembly.GetEntryAssembly()?.GetName().Name);

@@ -1,11 +1,11 @@
-﻿using Azure;
+﻿using System.Diagnostics.Tracing;
+using System.Drawing;
+using System.Text;
+using Azure;
 using Azure.Core;
 using Azure.Core.Diagnostics;
 using Azure.Identity;
 using Azure.Storage.Blobs;
-using System.Diagnostics.Tracing;
-using System.Drawing;
-using System.Text;
 using Console = Colorful.Console;
 
 public class Main : IMain

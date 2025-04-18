@@ -1,15 +1,15 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-using AppAuthentication.Helpers;
-using AppAuthentication.Models;
-using Microsoft.Azure.Services.AppAuthentication;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
+using AppAuthentication.Helpers;
+using AppAuthentication.Models;
+using Microsoft.Azure.Services.AppAuthentication;
+using Microsoft.Extensions.Logging;
 
 namespace AppAuthentication.VisualStudio
 {

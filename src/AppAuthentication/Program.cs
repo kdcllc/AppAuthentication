@@ -1,10 +1,9 @@
-﻿using McMaster.Extensions.CommandLineUtils;
-
-using System;
+﻿using System;
 using System.Drawing;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using McMaster.Extensions.CommandLineUtils;
 using Console = Colorful.Console;
 
 namespace AppAuthentication
